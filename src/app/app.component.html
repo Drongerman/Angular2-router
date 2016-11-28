@@ -4,9 +4,20 @@
           <h1>Hello World!</h1>
 
           <hr>
-          <a [routerLink]="['']">Home</a> |
+          <div routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a [routerLink]="['']"
+               [queryParams]="{analytics: 500}"
+               [fragment]="'section2'">
+              Home
+            </a>
+          </div>
+
           <input type="text" #id (input)="0">
-          <a [routerLink]="['/user', id.value]">User</a>
+          <a [routerLink]="['/user', id.value]"
+             [preserveQueryParams]="true"
+             [preserveFragment]="true"
+             routerLinkActive="active"
+          >Find user</a>
           <hr>
 
           <router-outlet></router-outlet>
